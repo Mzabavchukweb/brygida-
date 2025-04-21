@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O książce - Brygida Helbig</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+        }
+
+        .book-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page-title {
+            font-size: 4rem;
+            color: #2C3338;
+            text-align: center;
+            margin-bottom: 4rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #9B4D58, transparent);
+        }
+
+        .book-cover {
+            max-width: 400px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .book-section {
+            margin-bottom: 4rem;
+            padding: 3rem;
+            background: #fff;
+            border: 1px solid rgba(155, 77, 88, 0.1);
+            border-radius: 12px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: #9B4D58;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 3px;
+            height: 30px;
+            background: linear-gradient(to bottom, #9B4D58, transparent);
+            transform: translateY(-50%);
+        }
+
+        .book-description {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #2C3338;
+            margin-bottom: 2rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #666;
+            padding: 2rem;
+            border-left: 3px solid #9B4D58;
+            margin: 2rem 0;
+            background: rgba(155, 77, 88, 0.03);
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 1.1rem;
+            color: #9B4D58;
+            margin-top: 1rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .review {
+            padding: 2rem;
+            background: #fff;
+            border: 1px solid rgba(155, 77, 88, 0.1);
+            border-radius: 8px;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            margin-top: 1rem;
+            font-weight: 500;
+            color: #9B4D58;
+        }
+
+        .purchase-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .purchase-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #9B4D58;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .purchase-link:hover {
+            background: #2C3338;
+            transform: translateY(-2px);
+        }
+
+        .authors-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .author-card {
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border: 1px solid rgba(155, 77, 88, 0.1);
+            border-radius: 8px;
+        }
+
+        .author-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-size: 1.5rem;
+            color: #2C3338;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-title {
+            color: #666;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .book-container {
+                padding: 2rem 1rem;
+            }
+
+            .page-title {
+                font-size: 3rem;
+            }
+
+            .book-section {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .book-description {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .authors-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .purchase-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .purchase-link {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .book-description {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="book-container">
+        <h1 class="page-title">W imię matki i córki</h1>
+        
+        <div class="book-cover">
+            <img src="https://brygidahelbig.de/wp-content/uploads/2025/03/W_imie_matki_i_corki_-_okladka.jpeg" alt="Okładka książki W imię matki i córki">
+        </div>
+
+        <div class="purchase-links">
+            <a href="https://www.amazon.pl/imię-matki-córki-ARCHIPELAGI/dp/8328092581" class="purchase-link" target="_blank">
+                <i class="fab fa-amazon"></i>
+                Kup na Amazon
+            </a>
+            <a href="https://www.empik.com/w-imie-matki-i-corki-helbig-brygida-justina-helbig,p1577430438,ksiazka-p" class="purchase-link" target="_blank">
+                <i class="fas fa-shopping-bag"></i>
+                Kup w Empiku
+            </a>
+        </div>
+
+        <div class="book-section">
+            <h2 class="section-title">O książce</h2>
+            <div class="book-description">
+                <p>Nowa książka Brygidy Helbig, tym razem napisana z córką Justiną. Matka i córka, o trudniejszy zestaw niełatwo, jak powszechnie wiadomo i jak powszechnie się temu zaprzecza. Jest też chór. Chór dopowiada, zaprzecza, ironizuje i nie ulega obu paniom. Co mamy - matkę w depresji i córkę psycholożkę. W wyniku perturbacji życiowych dorosła córka wraca do domu, zajmuje swój dawny pokój. Obie kobiety muszą wypracować nie tylko podział przestrzeni ale i nauczyć patrzeć się na siebie z perspektywy tej drugiej.</p>
+                <p>Obie są i nie są u siebie w Berlinie. Aspekt migracyjny, niewłaściwego wyglądu, drobnych nieprzyjemności a nawet sporych dyskryminacji przewija się przez całą książkę. Sytuacje ratuje poczucie humoru, gdy np. jedna z bohaterek mówi, że codziennie rano budzi się z niecenzuralnym słowem na ustach (...) No ale co zrobić z depresją? Tutaj przychodzi z pomocą antropozoficzna klinika psychosomatyczna z niebotyczną ilością wykładów i warsztatów. Coś przecież może pomóc. Bardzo niemieckie zadaniowe podejście. Jednym słowem książka niebagatelna, odsłaniająca sekrety, w środku uczciwa. Bohaterka Gizela zadręcza się, że jest ciągle miła, grzeczna i non stop w uśmiechu. No kto by to wytrzymał???</p>
+                <div class="quote-author">Ula Ptak</div>
+            </div>
+        </div>
+
+        <div class="book-section">
+            <h2 class="section-title">Z okładki</h2>
+            <div class="quote">
+                <p>Siedem lat mieszkała za granicą. Chciała być daleko stąd. Myślałam, że tam zostanie. A ona któregoś dnia wróciła i stanęła w progu naszego berlińskiego mieszkania. Nagle musiałam oddać córce trochę przestrzeni, a tak naprawdę chciałam być tu sama, by pracować, pisać i czytać, przerzucać tony papieru, bo do tego się kształciłam, doktoryzowałam i habilitowałam. Tak, jestem doktorem – ale ani od duszy, ani od ciała, tylko od papieru i słów.</p>
+                <p>Słowa bywają różne, pełne miłości lub bólu, pełne ukrytych historii. Bo matka i córka mają sporo do przepracowania. Wspierają się, ale też ścierają. Bywa, że mają dość – siebie i wszystkiego wokół. A w końcu i tak szukają opasłego Gombrowicza, żeby ustawić na nim laptop i obejrzeć odcinek „Emily w Paryżu”. Bo wiedzą, że dadzą radę, że wyjdą z kryzysu mocniejsze i wszystko będzie dobrze.</p>
+                <div class="quote-author">Marek Władyka</div>
+            </div>
+        </div>
+
+        <div class="book-section">
+            <h2 class="section-title">Opinie o książce</h2>
+            <div class="reviews-grid">
+                <div class="review">
+                    <p class="review-text">„Nie było takiej książki po polsku. Czyta się znakomicie!"</p>
+                    <div class="review-author">Ula Ptak</div>
+                </div>
+                <div class="review">
+                    <p class="review-text">„Moim zdaniem będzie to bestseller, niechże więc wydawnictwo szykuje dodruki i honoraria."</p>
+                    <div class="review-author">prof. Inga Iwasiów</div>
+                </div>
+                <div class="review">
+                    <p class="review-text">„To naprawdę świetna powieść autofikcyjna (...). Jest tam mnóstwo ciekawych i głęboko prawdziwych spostrzeżeń na temat relacji matek i dorosłych córek, a poza tym to opowieść o wieku średnim, który jest kolejnym okresem burzy i naporu, jeszcze ciekawszym niż wczesna młodość."</p>
+                    <div class="review-author">Katarzyna Tubylewicz</div>
+                </div>
+                <div class="review">
+                    <p class="review-text">„Dozowałam sobie tę lekturę, jak lekarstwo tak, aby nie przedawkować. Bo ogrom emocji i wzruszeń zalewał mnie bezbrzeżnie."</p>
+                    <div class="review-author">Marzena Marzka, księgarnia Mandala</div>
+                </div>
+                <div class="review">
+                    <p class="review-text">„Jest to rzecz o (ukrytym, rzecz jasna) rewersie życia kobiety nieprzeciętnej, o kulturowych kontekstach i schematach mających ogromny wpływ na nasze życie, o rodzinie i jej więzach (w dosłownym i przenośnym sensie), o dziwnych czasach pandemii i w ogóle o dziwności (niesamowitości) tego świata."</p>
+                    <div class="review-author">prof. Gabriela Matuszek</div>
+                </div>
+                <div class="review">
+                    <p class="review-text">„To frapująca lektura dla każdej kobiety, bo każda z nas ma matkę... A jeśli jeszcze ma się córkę, to jest to podwójne przeżycie. (...) Chętnie poznam kobietę, czytelniczkę tej książki, która nie znajdzie w niej w jakimś stopniu siebie. Tylko nie wierzę, aby znalazł się ktoś taki."</p>
+                    <div class="review-author">Iwona Majewska-Opiełka</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-section">
+            <h2 class="section-title">Cytaty z książki</h2>
+            <div class="quote">
+                <p>Niewiele będzie się działo na powierzchni, pod spodem zaś wszystko.</p>
+                <div class="quote-author">ulubiony cytat Adama Gusowskiego</div>
+            </div>
+            <div class="quote">
+                <p>Jestem chodzącym dynamitem, tylko czekać aż eksploduję, ale najbardziej boję się tego, że nie wybuchnę nigdy, że się spalę od środka.</p>
+                <div class="quote-author">ulubiony cytat Natalii Prüfer</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
