@@ -1,0 +1,1011 @@
+<style>
+    .poetic-hero {
+        font-family: 'Cormorant Garamond', serif;
+        background: #fff;
+        min-height: 100vh;
+        overflow: hidden;
+        position: relative;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-bottom: 60px;
+        margin-bottom: 30px;
+    }
+
+    .poetic-hero::before {
+        content: '"';
+        position: absolute;
+        top: -8rem;
+        right: 5%;
+        font-size: 45rem;
+        color: rgba(155, 77, 88, 0.02);
+        font-family: 'Playfair Display', serif;
+        z-index: 0;
+    }
+
+    .poetic-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 2rem;
+        padding: 6rem 4rem;
+        position: relative;
+    }
+
+    .poetic-title {
+        grid-column: 2 / 12;
+        margin-top: 2rem;
+        position: relative;
+    }
+
+    .poetic-title::before {
+        content: '';
+        position: absolute;
+        top: -2rem;
+        left: 0;
+        width: 3px;
+        height: 60px;
+        background: linear-gradient(to bottom, #9B4D58, transparent);
+    }
+
+    .main-heading {
+        font-size: clamp(4rem, 8vw, 7.5rem);
+        font-weight: 300;
+        color: #2C3338;
+        line-height: 1;
+        margin-bottom: 2rem;
+        letter-spacing: 0.03em;
+        position: relative;
+    }
+
+    .sub-heading {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        color: #9B4D58;
+        font-weight: 300;
+        font-style: italic;
+        margin-bottom: 3rem;
+        letter-spacing: 0.02em;
+        position: relative;
+        padding-left: 2rem;
+    }
+
+    .sub-heading::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: rgba(155, 77, 88, 0.4);
+    }
+
+    .poetic-text {
+        font-size: 1.2rem;
+        line-height: 2;
+        color: #666;
+        max-width: 80%;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+        position: relative;
+    }
+
+    .book-feature {
+        grid-column: 2 / 12;
+        position: relative;
+        margin-top: 4rem;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .book-image {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        position: relative;
+        border-radius: 0;
+    }
+
+    .book-caption {
+        margin-top: 2rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #333;
+        font-family: 'Cormorant Garamond', serif;
+    }
+
+    .countdown {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #9B4D58;
+        font-style: italic;
+    }
+
+    .author-section {
+        grid-column: 2 / 12;
+        margin-top: 12rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+        position: relative;
+    }
+
+    .author-section::before {
+        content: '';
+        position: absolute;
+        top: -6rem;
+        left: 50%;
+        width: 1px;
+        height: 4rem;
+        background: linear-gradient(to bottom, transparent, rgba(155, 77, 88, 0.2));
+    }
+
+    .author-image {
+        width: 100%;
+        height: auto;
+        filter: contrast(1.1);
+        transition: all 0.6s ease;
+    }
+
+    .author-image:hover {
+        filter: contrast(1.2) brightness(1.05);
+    }
+
+    .author-info {
+        padding-left: 4rem;
+        border-left: 1px solid rgba(155, 77, 88, 0.2);
+        position: relative;
+    }
+
+    .author-name {
+        font-size: 4.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 0;
+        color: #333;
+        font-family: 'Cormorant Garamond', serif;
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 2rem;
+    }
+
+    .author-name::after {
+        content: '';
+        position: absolute;
+        bottom: -1rem;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(to right, #9B4D58, transparent);
+    }
+
+    .author-name::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 3px;
+        height: 70%;
+        background: linear-gradient(to bottom, #9B4D58, transparent);
+        transform: translateY(-50%);
+    }
+
+    .author-title {
+        font-size: 1.8rem;
+        color: #333;
+        letter-spacing: 0.05em;
+        font-weight: 300;
+        line-height: 1.4;
+        margin: 0 0 2rem 0;
+        font-family: 'Cormorant Garamond', serif;
+        text-align: left;
+    }
+
+    .author-title::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: rgba(155, 77, 88, 0.4);
+    }
+
+    .poetic-link {
+        display: inline-block;
+        margin-top: 3rem;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #9B4D58;
+        text-decoration: none;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(155, 77, 88, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .poetic-link:hover {
+        color: #2C3338;
+        border-bottom-color: #2C3338;
+        padding-right: 2rem;
+    }
+
+    .poetic-link::after {
+        content: '→';
+        position: absolute;
+        right: -2rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .poetic-link:hover::after {
+        opacity: 1;
+        right: 0;
+    }
+
+    @media (max-width: 1200px) {
+        .poetic-grid {
+            padding: 3rem;
+        }
+        
+        .author-info {
+            padding-left: 2rem;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .poetic-title {
+            grid-column: 2 / 12;
+            margin-top: 1rem;
+        }
+
+        .book-feature {
+            grid-column: 2 / 12;
+            margin-top: 4rem;
+        }
+
+        .author-section {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        .author-info {
+            padding-left: 0;
+            border-left: none;
+            text-align: center;
+        }
+
+        .author-title {
+            text-align: center;
+            font-size: 1.6rem;
+        }
+
+        .author-name {
+            font-size: 3.5rem;
+            text-align: center;
+        }
+
+        .poetic-hero::before {
+            font-size: 25rem;
+            top: -4rem;
+        }
+        
+        .author-name::before {
+            left: 50%;
+            width: 40px;
+            height: 2px;
+            top: -20px;
+            transform: translateX(-50%);
+        }
+
+        .hero-section {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center;
+            width: 100%;
+            gap: 1rem;
+        }
+
+        .hero-text {
+            width: 100%;
+            display: contents !important;
+        }
+
+        .author-name {
+            width: 100%;
+            text-align: center;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .hero-image-container {
+            width: 100% !important;
+            max-width: 400px;
+            margin: 1rem auto;
+            display: block !important;
+            order: 2 !important;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-credit {
+            display: block !important;
+            position: static !important;
+            width: 100% !important;
+            text-align: right !important;
+            font-size: 0.75rem !important;
+            color: #999 !important;
+            font-style: italic !important;
+            margin-top: 0.5rem !important;
+            padding: 0 !important;
+        }
+
+        .author-title {
+            width: 100%;
+            text-align: center;
+            padding: 0;
+            margin-top: 1rem;
+            order: 3 !important;
+        }
+
+        .social-links {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+            order: 4 !important;
+        }
+
+        .academic-title {
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .poetic-grid {
+            padding: 2rem;
+        }
+
+        .poetic-title {
+            grid-column: 1 / 13;
+        }
+
+        .book-feature {
+            grid-column: 1 / 13;
+        }
+
+        .author-section {
+            grid-column: 1 / 13;
+            margin-top: 8rem;
+        }
+    }
+
+    .image-container {
+        position: relative;
+    }
+
+    .portrait-container {
+        position: relative;
+        margin-bottom: 6rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .portrait-image {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .image-caption {
+        margin-top: 1rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.1rem;
+        color: #2C3338;
+        font-style: italic;
+        text-align: center;
+        line-height: 1.6;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(155, 77, 88, 0.2);
+    }
+
+    .hero-section {
+        grid-column: 2 / 12;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 6rem;
+        align-items: center;
+        margin-top: 6rem;
+        margin-bottom: 40px;
+    }
+
+    .hero-image {
+        width: 100%;
+        position: relative;
+        max-width: 600px;
+    }
+
+    .hero-text {
+        order: 1;
+    }
+
+    .main-container {
+        background: #fff;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .hero-image-container {
+        order: 2;
+        position: relative;
+        overflow: visible !important;
+        transition: all 0.6s ease;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid rgba(155, 77, 88, 0.2);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
+        margin-bottom: 30px;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: none;
+    }
+
+    .hero-image-container:hover {
+        transform: none;
+    }
+
+    .photo-credit {
+        position: absolute;
+        bottom: -30px;
+        right: 0;
+        font-size: 0.75rem;
+        color: #999;
+        font-style: italic;
+        padding: 5px 10px;
+        z-index: 2;
+    }
+
+    .hero-text {
+        padding-left: 2rem;
+    }
+
+    .social-links {
+        margin-top: 2rem;
+    }
+
+    .social-link {
+        display: inline-block;
+        color: #666;
+        text-decoration: none;
+        font-size: 1.1rem;
+        margin-right: 2rem;
+        position: relative;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .social-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #9B4D58;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .social-link:hover::after {
+        transform: translateX(0);
+    }
+
+    .book-section {
+        margin-top: 10rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .book-section::before {
+        content: '✦';
+        position: absolute;
+        top: -4rem;
+        right: 50%;
+        font-size: 1.5rem;
+        color: rgba(155, 77, 88, 0.3);
+    }
+
+    .book-label {
+        font-size: 0.9rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 2rem;
+    }
+
+    .book-container {
+        max-width: 400px;
+        margin: 0 auto;
+        position: relative;
+        transition: all 0.6s ease;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid rgba(155, 77, 88, 0.2);
+    }
+
+    .book-container:hover {
+        transform: translateY(-10px);
+    }
+
+    .book-title {
+        font-size: 2.2rem;
+        color: #333;
+        margin: 2rem 0 1rem;
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    .book-subtitle {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #666;
+        margin-top: 1rem;
+    }
+
+    .authors-section {
+        margin-top: 10rem;
+        text-align: center;
+        position: relative;
+        padding: 4rem 0;
+        background: #fff;
+    }
+
+    .authors-container {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid rgba(155, 77, 88, 0.2);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
+    }
+
+    .authors-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 2rem;
+        transition: all 0.6s ease;
+        border: 1px solid rgba(155, 77, 88, 0.1);
+    }
+
+    .authors-caption {
+        font-size: 1.2rem;
+        color: #333;
+        line-height: 1.8;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        margin-top: 2rem;
+        position: relative;
+        padding: 0 2rem;
+    }
+
+    .authors-caption::before {
+        content: '~';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        color: rgba(155, 77, 88, 0.3);
+    }
+
+    .authors-section::before {
+        content: '';
+        position: absolute;
+        top: -2rem;
+        left: 30%;
+        right: 30%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(155, 77, 88, 0.2), transparent);
+    }
+
+    .hero-image-container:hover,
+    .book-container:hover,
+    .authors-container:hover {
+        border-color: rgba(155, 77, 88, 0.3);
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+    }
+
+    .academic-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.2rem;
+        color: #2C3338;
+        margin-bottom: 0.5rem;
+        font-weight: normal;
+    }
+
+    .premiere-section {
+        margin: 4rem 0;
+        padding: 2rem;
+        position: relative;
+    }
+
+    .premiere-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+    }
+
+    .premiere-text {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .premiere-heading {
+        font-size: 5rem;
+        font-weight: 800;
+        color: #2C3338;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .premiere-subheading {
+        font-size: 2rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .authors-photo {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 1rem;
+    }
+
+    .authors-photo img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .store-link {
+        color: #9B4D58;
+        text-decoration: underline;
+        transition: color 0.3s ease;
+        margin: 0 0.5rem;
+    }
+
+    .book-display {
+        background: #FFD700;
+        padding: 2.5rem;
+        border-radius: 12px;
+        transform: perspective(1000px) rotateY(15deg);
+        max-width: 380px;
+        margin-left: auto;
+        margin-top: 2rem;
+        margin-right: 0;
+        box-shadow: -15px 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .premiere-book-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        box-shadow: -10px 10px 20px rgba(0,0,0,0.2);
+        max-width: 100%;
+    }
+
+    @media (max-width: 992px) {
+        .premiere-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .premiere-text {
+            padding-right: 0;
+            text-align: center;
+        }
+
+        .premiere-heading {
+            font-size: 3.5rem;
+        }
+
+        .premiere-subheading {
+            font-size: 1.6rem;
+        }
+
+        .book-display {
+            max-width: 260px;
+            margin: 0 auto;
+            transform: perspective(1000px) rotateY(12deg);
+        }
+
+        .hero-section {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center;
+            width: 100%;
+            gap: 1rem;
+        }
+
+        .hero-text {
+            width: 100%;
+            text-align: center;
+        }
+
+        .author-name {
+            font-size: 3.5rem;
+            text-align: center;
+        }
+
+        .author-title {
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .social-links {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .premiere-heading {
+            font-size: 2.8rem;
+        }
+
+        .premiere-subheading {
+            font-size: 1.4rem;
+        }
+
+        .book-display {
+            max-width: 220px;
+            padding: 1.5rem;
+        }
+
+        .author-name {
+            font-size: 2.8rem;
+        }
+
+        .author-title {
+            font-size: 1.4rem;
+        }
+    }
+
+    .photo-credit-elegant {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        color: #999;
+        font-size: 0.75rem;
+        position: absolute;
+        bottom: -40px;
+        right: 0;
+        padding: 5px 15px;
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .news-section {
+        margin: 8rem auto;
+        padding: 3rem 2rem;
+        max-width: 1000px;
+        text-align: center;
+    }
+
+    .section-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        color: #2C3338;
+        font-weight: 300;
+        margin-bottom: 4rem;
+        position: relative;
+        letter-spacing: 0.03em;
+    }
+
+    .heading-ornament {
+        display: block;
+        font-size: 1.2rem;
+        color: #9B4D58;
+        margin-top: 1.5rem;
+        opacity: 0.6;
+    }
+
+    .section-heading::after {
+        content: '';
+        position: absolute;
+        bottom: -2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #9B4D58, transparent);
+    }
+
+    .news-preview {
+        padding: 4rem;
+        background: #fff;
+        border: 1px solid rgba(155, 77, 88, 0.1);
+        transition: all 0.3s ease;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .news-meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .news-date, .news-time {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        color: #9B4D58;
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .news-divider {
+        color: #9B4D58;
+        opacity: 0.5;
+    }
+
+    .news-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        color: #2C3338;
+        margin-bottom: 2rem;
+        font-weight: 300;
+        line-height: 1.3;
+    }
+
+    .news-teaser {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.4rem;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .news-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: #9B4D58;
+        text-decoration: none;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .link-arrow {
+        transition: transform 0.3s ease;
+    }
+
+    .news-link:hover {
+        border-bottom-color: #9B4D58;
+    }
+
+    .news-link:hover .link-arrow {
+        transform: translateX(5px);
+    }
+
+    @media (max-width: 768px) {
+        .news-section {
+            margin: 6rem 1rem;
+            padding: 2rem 1rem;
+        }
+
+        .section-heading {
+            font-size: 2.8rem;
+        }
+
+        .news-preview {
+            padding: 2rem;
+        }
+
+        .news-title {
+            font-size: 2rem;
+        }
+
+        .news-teaser {
+            font-size: 1.2rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .section-heading {
+            font-size: 2.3rem;
+        }
+
+        .news-title {
+            font-size: 1.8rem;
+        }
+
+        .news-teaser {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+
+<div class="poetic-hero">
+    <div class="main-container">
+        <div class="premiere-section">
+            <div class="premiere-content">
+                <div class="premiere-text">
+                    <h2 class="premiere-heading">PREMIERE!!!</h2>
+                    <p class="premiere-subheading">
+                        NEUES BUCH von Brygida Helbig und Justina Helbig jetzt bei 
+                        <a href="https://www.amazon.pl/imię-matki-córki-ARCHIPELAGI/dp/8328092581" class="store-link">Amazon</a> und 
+                        <a href="https://www.empik.com/w-imie-matki-i-corki-helbig-brygida-justina-helbig,p1577430438,ksiazka-p" class="store-link">Empik</a>
+                    </p>
+                    <div class="authors-photo" style="position: relative; margin-bottom: 45px;">
+                        <img src="https://brygidahelbig.de/wp-content/uploads/2025/03/brygida-z-corka-1-1-scaled.jpg" alt="Brygida Helbig mit ihrer Tochter">
+                        <div class="photo-credit-elegant">Fot. Kamila Paradowska</div>
+                    </div>
+                </div>
+                <div class="book-display">
+                    <img src="https://brygidahelbig.de/wp-content/uploads/2025/03/W_imie_matki_i_corki_-_okladka.jpeg" alt="Buchcover" class="premiere-book-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-section">
+            <div class="hero-text">
+                <p class="academic-title">Dr. habil. Brygida Helbig</p>
+                <h1 class="author-name">BRYGIDA<br>HELBIG</h1>
+                <h2 class="author-title">Schriftstellerin, Literaturwissenschaftlerin, Mentorin</h2>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/brygida.helbig?igsh=MWZrbWEzdnNja2g5Mw==" class="social-link">Instagram</a>
+                    <a href="https://www.facebook.com/share/14xGKRA4kG/?mibextid=wwXIfr" class="social-link">Facebook</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="https://brygidahelbig.de/wp-content/uploads/2025/03/B.-Helbig-1.jpeg" alt="Brygida Helbig Porträt" class="hero-image">
+                <div class="photo-credit-elegant">Foto: Kamila Paradowska</div>
+            </div>
+        </div>
+
+        <div class="news-section">
+            <h2 class="section-heading">Was gibt es Neues<span class="heading-ornament">✦</span></h2>
+            <div class="news-preview">
+                <div class="news-content">
+                    <div class="news-meta">
+                        <p class="news-date">20. März 2025</p>
+                        <span class="news-divider">•</span>
+                        <p class="news-time">19:00</p>
+                    </div>
+                    <h3 class="news-title">Wie verwirklicht man seine Ziele in der Emigration?</h3>
+                    <p class="news-teaser">
+                        Wir laden Sie zu einem besonderen LIVE-Gespräch mit Dr. habil. Brygida Helbig und Justina Mischewski ein. 
+                        Wir sprechen über Herausforderungen, Träume und die Kraft, Grenzen zu überwinden...
+                    </p>
+                    <a href="https://brygidahelbig.de/aktuelles/" class="news-link">
+                        Mehr entdecken
+                        <span class="link-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
